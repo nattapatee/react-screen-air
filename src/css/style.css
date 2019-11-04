@@ -1,0 +1,48 @@
+#components-layout-demo-custom-trigger .logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+#components-form-demo-normal-login .login-form {
+  max-width: 300px !important;
+}
+#components-form-demo-normal-login .login-form-forgot {
+  float: right !important;
+}
+#components-form-demo-normal-login .login-form-button {
+  width: 100% !important;
+}
+.logoLogin {
+  position: absolute;
+  right: 60px;
+  z-index: 99;
+  top: -190px;
+}
+.backgroundLogin {
+  background-image: url("https://images.unsplash.com/photo-1542296332-2e4473faf563?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+}
+.column-Document {
+  text-align: center;
+}
+th.column-Document {
+  text-align: center !important;
+}
+.ant-table-thead {
+  text-align: center !important;
+}
+.replyIn {
+  margin-left: 5px !important;
+}
+.segmentHeader {
+  background-color: #16639729 !important;
+}
+.ant-list-item-meta-title {
+  color: #166397!important;
+}
+
