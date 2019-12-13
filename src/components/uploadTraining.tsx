@@ -272,6 +272,14 @@ export class UploadTraining extends React.Component<Props, State> {
               </Col>
               <Col span={2} />
             </Row>
+            <Row>
+              <Col span={6} style={{ textAlign: "right" }}>
+              </Col>
+              <Col span={15}>
+               ( ไม่รวมวันเดินทาง )
+              </Col>
+              <Col span={2} />
+            </Row>
             <br />
             <Row>
               <Col span={6} style={{ textAlign: "right" }}>
@@ -286,7 +294,7 @@ export class UploadTraining extends React.Component<Props, State> {
               <Col span={6} style={{ textAlign: "right" }}></Col>
               <Col span={15} style={{ color: "gray", fontSize: "12" }}>
                 <span className="replyIn">
-                  กรณีที่มีการลา ให้ระบุที่ช่องหมายเหตุ
+                  กรณีที่มีการลาต่อจากวันที่อบรมให้ระบุที่ช่องหมายเหตุ
                 </span>
               </Col>
               <Col span={2} />
@@ -323,7 +331,7 @@ export class UploadTraining extends React.Component<Props, State> {
             <br />
             <Row>
               <Col span={6} style={{ textAlign: "right" }}>
-                Certificate :{" "}
+              ประกาศนียบัตร :{" "}
               </Col>
               <Col span={15}>
                 <Upload {...props} style={{ marginLeft: "5px" }}>
@@ -338,7 +346,7 @@ export class UploadTraining extends React.Component<Props, State> {
               <Col span={6} style={{ textAlign: "right" }}></Col>
               <Col span={15}>
                 <Checkbox className="replyIn" onChange={this.onToggleDetail}>
-                  กรณีไม่มีเอกสารอัปโหลด ให้ระบุเหตุผล
+                  กรณีที่ไม่ได้แนบประกาศนียบัตร กรุณาระบุเหตุผล
                 </Checkbox>
                 {this.state.toggleDetail && (
                   <TextArea rows={4} />
@@ -365,7 +373,7 @@ export class UploadTraining extends React.Component<Props, State> {
               <Col span={15}>
                 <Checkbox className="replyIn">
                   กรณีไม่มีไฟล์เอกสารอิเล็กทรอนิกส์
-                  กรุณาส่งหนังสือหรือเอกสารการฝึกอบรมได้ที่กลุ่ม TN ชั้น 14
+                  กรุณาส่งหนังสือหรือเอกสารการฝึกอบรมได้ที่กอง TN ชั้น 14
                 </Checkbox>
               </Col>
               <Col span={2} />

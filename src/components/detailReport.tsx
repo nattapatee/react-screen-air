@@ -143,20 +143,47 @@ export class DetailReport extends React.Component<Props, State> {
               <Row>
                 <Col span={2} />
                 <Col span={4} style={{ textAlign: "right" }}>
-                  รายละเอียด :
+                  สถาบัน :
                 </Col>
                 <Col span={8} style={{ paddingLeft: "5px" }}>
-                  อิออนเพนกวิน เก๋ากี้โนติสแคร็กเกอร์สะบึมส์ คำตอบ
-                  เซ็นเซอร์แมมโบ้เท็กซ์ฟลุทบอกซ์ เปราะบาง
-                  หยวนสไลด์โมจิคาแร็คเตอร์ ออยล์บอกซ์ฮิปฮอป ไลฟ์
-                  บอดี้ลาเต้ออดิทอเรียมกุมภาพันธ์
-                  พาร์ทเนอร์จีดีพีซากุระพ่อค้าจิ๊ก เรซิ่นรีโมต แยมโรล
-                  ซานตาคลอสคอลัมน์ วีซ่ามาร์ชสเตเดียมซีอีโอแหม็บ ปาร์ตี้
-                  โฮสเตสเห่ยเปเปอร์บาลานซ์ธุรกรรม
+                  Air School
                 </Col>
                 <Col span={4} />
               </Row>
               <br />
+              <Row>
+                <Col span={2} />
+                <Col span={4} style={{ textAlign: "right" }}>
+                  ประเทศ :
+                </Col>
+                <Col span={8} style={{ paddingLeft: "5px" }}>
+                  Thai
+                </Col>
+                <Col span={4} />
+              </Row>
+              <br />
+              <Row>
+                <Col span={2} />
+                <Col span={4} style={{ textAlign: "right" }}>
+                  วันที่อบรม :
+                </Col>
+                <Col span={8} style={{ paddingLeft: "5px" }}>
+                  3 ต.ค. 2019
+                </Col>
+                <Col span={4} />
+              </Row>
+              <br />
+              <Row>
+                <Col span={2} />
+                <Col span={4} style={{ textAlign: "right" }}>
+                วันที่กลับมาปฏิบัติงาน  :
+                </Col>
+                <Col span={8} style={{ paddingLeft: "5px" }}>
+                5 ต.ค. 2019
+                </Col>
+                <Col span={4} />
+              </Row>
+              {/* <br />
               <Row>
                 <Col span={2} />
                 <Col span={4} style={{ textAlign: "right" }}>
@@ -166,7 +193,7 @@ export class DetailReport extends React.Component<Props, State> {
                   20 ก.ย. 2019 - 3 ต.ค. 2019
                 </Col>
                 <Col span={4} />
-              </Row>
+              </Row> */}
               <br />
               <Row>
                 <Col span={2} />
@@ -334,6 +361,17 @@ export class DetailReport extends React.Component<Props, State> {
               <Row>
                 <Col span={2} />
                 <Col span={4} style={{ textAlign: "right" }}>
+                  รหัสพนักงาน :
+                </Col>
+                <Col span={8} style={{ paddingLeft: "5px" }}>
+                  1101
+                </Col>
+                <Col span={4} />
+              </Row>
+              <br />
+              <Row>
+                <Col span={2} />
+                <Col span={4} style={{ textAlign: "right" }}>
                   ตำแหน่ง :
                 </Col>
                 <Col span={8} style={{ paddingLeft: "5px" }}>
@@ -441,6 +479,17 @@ export class DetailReport extends React.Component<Props, State> {
                   </NavLink>
                 )}
               />
+              <br />
+              <Row>
+                <Col span={2} />
+                <Col span={4} style={{ textAlign: "right" }}>
+                  เหตุผลที่ไม่มี Certificate :
+                </Col>
+                <Col span={8} style={{ paddingLeft: "5px" }}>
+                  -
+                </Col>
+                <Col span={4} />
+              </Row>
             </Segment>
             <br />
             <Segment

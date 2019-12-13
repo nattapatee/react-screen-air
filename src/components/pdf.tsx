@@ -35,7 +35,7 @@ export class PDF extends React.Component<Props, State> {
           margin: "24px 16px",
           padding: 24,
           background: "#fff",
-          minHeight: 280
+          minHeight: 350
         }}
       >
         <Header as="h2">
@@ -51,7 +51,7 @@ export class PDF extends React.Component<Props, State> {
         <Iframe
           url={`https://asp.demosoft.me/api/files/fileName/github.pdf`}
           width="100%"
-          height="80%"
+          height="93%"
           position="relative"
           allowFullScreen
         />

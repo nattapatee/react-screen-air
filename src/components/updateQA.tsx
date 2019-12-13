@@ -12,7 +12,9 @@ import {
   Upload,
   message,
   Modal,
-  List, Avatar, Spin
+  List,
+  Avatar,
+  Spin
 } from "antd";
 import Center from "react-center";
 
@@ -22,16 +24,20 @@ import TextArea from "antd/lib/input/TextArea";
 import * as React from "react";
 const { Search } = Input;
 const { Option } = Select;
-import reqwest from 'reqwest';
+import reqwest from "reqwest";
 
-import InfiniteScroll from 'react-infinite-scroller';
+import InfiniteScroll from "react-infinite-scroller";
 
-const fakeDataUrl = 'https://randomuser.me/api/?results=20&inc=name,gender,email,nat&noinfo';
+const fakeDataUrl =
+  "https://randomuser.me/api/?results=20&inc=name,gender,email,nat&noinfo";
 type State = {
   visible: boolean;
-  data: any[],
-  loading: boolean,
-  hasMore: boolean,
+  data: any[];
+  loading: boolean;
+  hasMore: boolean;
+  trigger: boolean;
+  type: string;
+  id: string;
 };
 const { Content } = Layout;
 type Props = {};
@@ -43,41 +49,55 @@ export class UpdateQA extends React.Component<Props, State> {
       data: [],
       loading: false,
       hasMore: true,
+      trigger: false,
+      type: "",
+      id: ""
     };
   }
+
+  onDocTypeChange = value => {
+    this.setState({ type: value });
+  };
   showModal = () => {
     this.setState({
-      visible: true,
+      visible: true
     });
   };
   componentDidMount() {
     this.fetchData(res => {
       this.setState({
-        data: res.results,
+        data: res.results
       });
     });
   }
+  onTrigger = () => {
+    this.setState({
+      trigger: !this.state.trigger,
+      visible: false,
+      id: "CAAT-AGA-AIM.pdf"
+    });
+  };
   fetchData = callback => {
     reqwest({
       url: fakeDataUrl,
-      type: 'json',
-      method: 'get',
-      contentType: 'application/json',
+      type: "json",
+      method: "get",
+      contentType: "application/json",
       success: res => {
         callback(res);
-      },
+      }
     });
   };
   handleInfiniteOnLoad = () => {
     let { data } = this.state;
     this.setState({
-      loading: true,
+      loading: true
     });
     if (data.length > 14) {
-      message.warning('Infinite List loaded all');
+      message.warning("Infinite List loaded all");
       this.setState({
         hasMore: false,
-        loading: false,
+        loading: false
       });
       return;
     }
@@ -85,25 +105,27 @@ export class UpdateQA extends React.Component<Props, State> {
       data = data.concat(res.results);
       this.setState({
         data,
-        loading: false,
+        loading: false
       });
     });
   };
   handleOk = e => {
     console.log(e);
     this.setState({
-      visible: false,
+      visible: false
     });
   };
 
   handleCancel = e => {
     console.log(e);
     this.setState({
-      visible: false,
+      visible: false
     });
   };
 
   public render() {
+    let { type } = this.state;
+
     const props = {
       name: "file",
       action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
@@ -133,8 +155,8 @@ export class UpdateQA extends React.Component<Props, State> {
         <Header as="h2">
           <Ic name="search" />
           <Header.Content>
-            อัพเดทเอกสาร
-            <Header.Subheader>อัพเดทเอกสารเพื่อให้ QA ตรวจสอบ</Header.Subheader>
+            อัปเดทเอกสาร
+            <Header.Subheader>อัปเดทเอกสารเพื่อให้ QA ตรวจสอบ</Header.Subheader>
           </Header.Content>
         </Header>
         <hr />
@@ -145,103 +167,166 @@ export class UpdateQA extends React.Component<Props, State> {
             ค้นหาเอกสารเดิม :
           </Col>
           <Col span={10}>
-            <Input style={{ width: 400, marginLeft: "5px" }} disabled />
+            <Input
+              style={{ width: 400, marginLeft: "5px" }}
+              value={this.state.id}
+              disabled
+            />
             <Button
               style={{ marginLeft: "5px" }}
               onClick={this.showModal}
               shape="circle"
               icon="search"
             />
-             <Modal
-          title="ค้นหา/เลือกไฟล์"
-          visible={this.state.visible}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-          footer={null}
-        >
-            <Search
-      placeholder="ค้นหาไฟล์"
-      onSearch={value => console.log(value)}
-      style={{ width: "100%" }}
-    />
-         <div className="demo-infinite-container" style={{height: "600px",overflow: "auto"}}>
-     
-          <List
-            dataSource={this.state.data}
-            renderItem={item => (
-              <List.Item key={item.id}>
-                <List.Item.Meta
-                  avatar={
-                    <Avatar src="https://img.icons8.com/bubbles/2x/document.png" />
-                  }
-                  title="CAAT-AGA-AIM.pdf"
-                  description="14 มิ.ย. 62 สร้างโดย : อ๊บ ไสไม้"
-                />
-                <Button>เลือกไฟล์นี้</Button>
-              </List.Item>
-            )}
-          >
-          </List>
-      </div>
-        </Modal>
+            <Modal
+              title="ค้นหา/เลือกไฟล์"
+              visible={this.state.visible}
+              onOk={this.handleOk}
+              onCancel={this.handleCancel}
+              footer={null}
+            >
+              <Search
+                placeholder="ค้นหาไฟล์"
+                onSearch={value => console.log(value)}
+                style={{ width: "100%" }}
+              />
+              <div
+                className="demo-infinite-container"
+                style={{ height: "600px", overflow: "auto" }}
+              >
+                <List
+                  dataSource={this.state.data}
+                  renderItem={item => (
+                    <List.Item key={item.id}>
+                      <List.Item.Meta
+                        avatar={
+                          <Avatar src="https://img.icons8.com/bubbles/2x/document.png" />
+                        }
+                        title="CAAT-AGA-AIM.pdf"
+                        description="14 มิ.ย. 62 สร้างโดย : อ๊บ ไสไม้"
+                      />
+                      <Button onClick={this.onTrigger}>เลือกไฟล์นี้</Button>
+                    </List.Item>
+                  )}
+                ></List>
+              </div>
+            </Modal>
           </Col>
           <Col span={4} />
         </Row>
         <br />
-        <Row>
-          <Col span={4} />
-          <Col span={5} style={{ textAlign: "right", marginTop: "5px" }}>
-            Upload :
-          </Col>
-          <Col span={10}>
-            <Upload {...props} style={{ marginLeft: "5px" }}>
-              <Button>
-                <Icon type="upload" /> คลิกเพื่อเลือกไฟล์
-              </Button>
-            </Upload>
-          </Col>
+        {this.state.trigger && (
+          <div>
+          
+            <Row>
+              <Col span={4} />
+              <Col span={5} style={{ textAlign: "right", marginTop: "5px" }}>
+                รูปแบบ :
+              </Col>
+              <Col span={10}>
+                <Select
+                  placeholder="-กรุณาเลือก-"
+                  style={{ width: 400, marginLeft: "5px" }}
+                  onChange={this.onDocTypeChange}
+                  defaultValue="Public"
+                  disabled
+                >
+                 <Option value="Public">เอกสารที่ผู้จัดการฝ่ายรับรอง</Option>
+                <Option value="Internal">เอกสารที่ผอ. หรือรองผอ. รับรอง</Option>
+                </Select>
+              </Col>
+              <Col span={4} />
+            </Row>
+            <br />
+            <Row>
+              <Col span={4} />
+              <Col span={5} style={{ textAlign: "right", marginTop: "5px" }}>
+                ประเภทเอกสาร :
+              </Col>
+              <Col span={10}>
+                {type == "Public" ? (
+                  <Select
+                    placeholder="-กรุณาเลือก-"
+                    style={{ width: 400, marginLeft: "5px" }}
+                    defaultValue="Public"
+                    disabled
+                  >
+                     <Option value="Regulation">Checklist</Option>
+                  <Option value="Guidance">Guidance</Option>
+                  <Option value="Public">Department manual & Procedure</Option>
+                  </Select>
+                ) : type == "Internal" ? (
+                  <Select
+                    placeholder="-กรุณาเลือก-"
+                    style={{ width: 400, marginLeft: "5px" }}
+                    defaultValue="Internal"
+                    disabled
+                  >
+                    <Option value="Internal">Checklist</Option>
+                  <Option value="Corporate">Guidance</Option>
+                  <Option value="Department">Manual</Option>
+                  </Select>
+                ) : (
+                  <Select
+                  placeholder="-กรุณาเลือก-"
+                  style={{ width: 400, marginLeft: "5px" }}
+                  defaultValue="Public"
+                  disabled
+                >
+                 <Option value="Regulation">Checklist</Option>
+                  <Option value="Guidance">Guidance</Option>
+                  <Option value="Public">Department manual & Procedure</Option>
+                </Select>
+                )}
+              </Col>
+              <Col span={4} />
+            </Row>
+            <br />
+            <Row>
+              <Col span={4} />
+              <Col span={5} style={{ textAlign: "right", marginTop: "5px" }}>
+                อัปโหลดเอกสาร :
+              </Col>
+              <Col span={10}>
+                <Upload {...props} style={{ marginLeft: "5px" }}>
+                  <Button>
+                    <Icon type="upload" /> คลิกเพื่อเลือกไฟล์
+                  </Button>
+                </Upload>
+              </Col>
 
-          <Col span={4} />
-        </Row>
-        <br />
-        <Row>
-          <Col span={4} />
-          <Col span={5} style={{ textAlign: "right", marginTop: "5px" }}>
-            Comment :
-          </Col>
-          <Col span={10}>
-            <TextArea rows={4} style={{ width: 400, marginLeft: "5px" }} />
-          </Col>
-          <Col span={4} />
-        </Row>
-        <br />
-        <Row>
-          <Col span={4} />
-          <Col span={5} style={{ textAlign: "right", marginTop: "5px" }}>
-            doctype :
-          </Col>
-          <Col span={10}>
-            <Input
-              value="Form"
-              style={{ width: 400, marginLeft: "5px" }}
-              disabled
-            />
-          </Col>
-          <Col span={4} />
-        </Row>
-        <br />
-        <Row>
-          <Col span={4} />
-          <Col span={16}>
-            <Center>
-              <Button type="primary" style={{ marginRight: "20px" }} icon="save">
-                Submit
-              </Button>
-              <Button  icon="close-circle">Clear</Button>
-            </Center>
-          </Col>
-          <Col span={4} />
-        </Row>
+              <Col span={4} />
+            </Row>
+            <br />
+            <Row>
+              <Col span={4} />
+              <Col span={5} style={{ textAlign: "right", marginTop: "5px" }}>
+                หมายเหตุ :
+              </Col>
+              <Col span={10}>
+                <TextArea rows={4} style={{ width: 400, marginLeft: "5px" }} />
+              </Col>
+              <Col span={4} />
+            </Row>
+            <br />
+            <Row>
+              <Col span={4} />
+              <Col span={16}>
+                <Center>
+                  <Button
+                    type="primary"
+                    style={{ marginRight: "20px" }}
+                    icon="save"
+                  >
+                    ตกลง
+                  </Button>
+                  <Button icon="close-circle">ยกเลิก</Button>
+                </Center>
+              </Col>
+              <Col span={4} />
+            </Row>
+          </div>
+        )}
       </Content>
     );
   }

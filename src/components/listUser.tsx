@@ -125,7 +125,7 @@ export class ListUser extends React.Component<Props, State> {
         <Header as="h2">
           <Ic name="search" />
           <Header.Content>
-            รายการตรวจสอบสถานะ
+          รายการตรวจสอบเอกสาร
             <Header.Subheader> สถานะการตรวจสอบเอกสารจาก QA</Header.Subheader>
           </Header.Content>
         </Header>

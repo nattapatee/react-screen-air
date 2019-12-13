@@ -198,9 +198,8 @@ export class SearchResult extends React.Component<Props, State> {
                         title={<a href="https://ant.design">{item.title}</a>}
                         description={
                           <span>
-                            System : {item.role == "KM" ? (<Tag color="cyan" style={{marginRight: "10px"}}>KM</Tag>) : (<Tag color="lime"  style={{marginRight: "10px"}}>QA</Tag>)} Status : <Tag color="#87d068">{item.status}</Tag>
-                            <br />
-                            Department : <Tag color="blue">{item.Department}</Tag> Type of
+                            <span style={{marginBottom: 10}}>
+                            System : {item.role == "KM" ? (<Tag color="cyan" style={{marginRight: "10px"}}>KM</Tag>) : (<Tag color="lime"  style={{marginRight: "10px"}}>QA</Tag>)} Type of
                             Tag :{" "}
                             {item.type == "Security" ? (
                               <Tag color="volcano">{item.type}</Tag>
@@ -211,6 +210,9 @@ export class SearchResult extends React.Component<Props, State> {
                             ) : (
                               <Tag color="blue">{item.type}</Tag>
                             )}
+                            </span>
+                     <br />
+                            <span style={{float: "right",color: "grey"}}><Icon type="eye" /> 10 </span>
                           </span>
                         }
                       />

@@ -40,6 +40,18 @@ import { DetailKMz } from "./detailKMz";
 import { Config } from "./config";
 import { DetailKMReject } from "./detailKMReject";
 import { ListSendTraining } from "./listSendTraining";
+import { ListWaitQA } from "./listWaitQA";
+import { EditQA } from "./editQA";
+import { ReportQA } from "./reportQA";
+import { DetailQAFirst } from "./detailQAFirst";
+import { DetailQASecond } from "./detailQASecond";
+import { Calendar } from "./calendar";
+import { ListViewTraining } from "./listViewTraining";
+import { DetailQAReject } from "./detailQAReject";
+import { DetailQAUpload } from "./detailQAUpload";
+import { Annual } from "./annual";
+import { Disposal } from "./disposal";
+import { Feedback } from "./feedback";
 
 type State = {
   collapsed: boolean;
@@ -115,6 +127,18 @@ export class Body extends React.Component<Props, State> {
         title: "QA Approve"
       }
     ];
+    const contentz = (
+      <div>
+         <Menu theme="light" mode="inline" >
+        <Menu.Item key="9">
+                  <NavLink to="/upload">อัปโหลดเอกสาร</NavLink>
+                </Menu.Item>
+                <Menu.Item key="10">
+                  <NavLink to="/update">อัปเดทเอกสาร</NavLink>
+                </Menu.Item>
+                </Menu>
+      </div>
+    );
     const content = (
       <div>
         <hr />
@@ -185,21 +209,43 @@ export class Body extends React.Component<Props, State> {
                 title={
                   <span>
                     <Icon type="user" />
-                    <span>ตรวจสอบเอกสาร QA</span>
+                    <span>Document Control</span>
                   </span>
                 }
               >
-                <Menu.Item key="9">
+                 <Menu.Item key="101221">
+                 <Popover placement="right" title={null} content={contentz} trigger="hover">
+
+                  Document Submit to QA
+                  </Popover>
+
+                </Menu.Item>
+               <Menu.Item key="9222">
+
+               <NavLink to="/annual">Annual Process Review</NavLink>
+
+                </Menu.Item>
+                <Menu.Item key="10">
+
+                <NavLink to="/disposal">Document Disposal</NavLink>
+
+                </Menu.Item>
+                <Menu.Item key="122220">
+
+                <NavLink to="/feedback">Feedback on document</NavLink>
+
+                </Menu.Item>
+                {/* <Menu.Item key="9">
                   <NavLink to="/upload">อัปโหลดเอกสาร</NavLink>
                 </Menu.Item>
                 <Menu.Item key="10">
-                  <NavLink to="/update">อัพเดทเอกสาร</NavLink>
-                </Menu.Item>
+                  <NavLink to="/update">อัปเดทเอกสาร</NavLink>
+                </Menu.Item> */}
 
                 <Menu.Item key="11">
                   <NavLink to="/list">
                     <Badge
-                      count={2}
+                      count={1}
                       style={{ position: "absolute", right: "-10px" }}
                     >
                       รายการตรวจสอบเอกสาร
@@ -245,13 +291,59 @@ export class Body extends React.Component<Props, State> {
                 title={
                   <span>
                     <Icon type="user" />
-                    <span>ตรวจสอบเอกสาร QA</span>
+                    <span>Document Control</span>
                   </span>
                 }
               >
-                <Menu.Item key="9">
-                  <NavLink to="/listCheck">งานที่รอตรวจสอบ</NavLink>
+                 <Menu.Item key="1111">
+                  <NavLink to="/listWaitQA"> <Badge
+                      count={2}
+                      style={{ position: "absolute", right: "-10px" }}
+                    >รายการเอกสารรอตรวจสอบ</Badge></NavLink>
                 </Menu.Item>
+                 <Menu.Item key="101221">
+                 <Popover placement="right" title={null} content={contentz} trigger="hover">
+
+                  Document Submit to QA
+                  </Popover>
+
+                </Menu.Item>
+                
+                <Menu.Item key="9">
+
+<NavLink to="/annual">Annual Process Review</NavLink>
+
+ </Menu.Item>
+ <Menu.Item key="10">
+
+ <NavLink to="/disposal">Document Disposal</NavLink>
+
+ </Menu.Item>
+ <Menu.Item key="122220">
+
+ <NavLink to="/feedback">Feedback on document</NavLink>
+
+ </Menu.Item>
+                <Menu.Item key="9">
+                  <NavLink to="/list">รายการตรวจสอบเอกสาร</NavLink>
+                </Menu.Item>
+              </SubMenu>
+              <SubMenu
+                key="sub4"
+                title={
+                  <span>
+                    <Icon type="file-text" />
+                    <span>รายงาน</span>
+                  </span>
+                }
+              >
+                <Menu.Item key="1101">
+                  {" "}
+                  <NavLink to="/reportQA">
+                      รายงานการตรวจสอบเอกสาร QA
+                  </NavLink>
+                </Menu.Item>
+       
               </SubMenu>
               <SubMenu
                 key="sub3"
@@ -284,12 +376,12 @@ export class Body extends React.Component<Props, State> {
                   <NavLink to="/listTraining">รายการรายงาน Training</NavLink>
                 </Menu.Item>
               </SubMenu>
-
-              <Redirect push to={`/listCheck`} />
+             
+              <Redirect push to={`/listWaitQA`} />
             </Menu>
           ) : (
             <Menu theme="light" mode="inline" defaultSelectedKeys={["1"]}>
-                        <SubMenu
+                        {/* <SubMenu
                 key="sub2"
                 title={
                   <span>
@@ -301,7 +393,7 @@ export class Body extends React.Component<Props, State> {
                 <Menu.Item key="9">
                   <NavLink to="/listCheck">งานที่รอตรวจสอบ</NavLink>
                 </Menu.Item>
-              </SubMenu>
+              </SubMenu> */}
               <SubMenu
                 key="sub3zz"
                 title={
@@ -320,7 +412,7 @@ export class Body extends React.Component<Props, State> {
                       count={1}
                       style={{ position: "absolute", right: "-10px" }}
                     >
-                      รายงานที่รอตรวจสอบ
+                      รายการที่รอตรวจสอบ
                     </Badge>
                   </NavLink>
                 </Menu.Item>
@@ -332,6 +424,7 @@ export class Body extends React.Component<Props, State> {
                   {" "}
                   <NavLink to="/listTraining">รายการรายงาน Training</NavLink>
                 </Menu.Item>
+              
               </SubMenu>
 
               <SubMenu
@@ -355,6 +448,10 @@ export class Body extends React.Component<Props, State> {
                     สถานะการส่งรายงาน
                   </NavLink>
                 </Menu.Item>
+                <Menu.Item key="1001z/z">
+                  {" "}
+                  <NavLink to="/listViewTraining">การดูเอกสารรายงาน Training</NavLink>
+                </Menu.Item>
               </SubMenu>
               <SubMenu
                 key="sub4"
@@ -368,9 +465,12 @@ export class Body extends React.Component<Props, State> {
                 <Menu.Item key="300">
                   <NavLink to="/config/tag">Tag</NavLink>
                 </Menu.Item>
+                <Menu.Item key="321">
+                  <NavLink to="/config/calendar">วันหยุด</NavLink>
+                </Menu.Item>
               </SubMenu>
 
-              <Redirect push to={`/listCheck`} />
+              <Redirect push to={`/listReport`} />
             </Menu>
           )}
         </Sider>
@@ -433,8 +533,16 @@ export class Body extends React.Component<Props, State> {
             <Route exact path="/upload" component={UploadQA} />
             <Route exact path="/update" component={UpdateQA} />
             <Route exact path="/list" component={ListQA} />
+            <Route exact path="/list/reject" component={DetailQAReject} />
             <Route exact path="/list/detail" component={DetailQA} />
+            <Route exact path="/list/upload" component={DetailQAUpload} />
+            <Route exact path="/list/detailFirst" component={DetailQAFirst} />
+
+            <Route exact path="/list/detailSecond" component={DetailQASecond} />
+
+            <Route exact path="/list/detail/edit" component={EditQA} />
             <Route exact path="/list/detailUpdate" component={DetailUpdateQA} />
+            <Route exact path="/reportQA" component={ReportQA} />
             <Route
               exact
               path="/list/detailUpdate/compare"
@@ -445,7 +553,9 @@ export class Body extends React.Component<Props, State> {
             <Route exact path="/listReport" component={ListReport} />
             <Route exact path="/listReport/detail" component={DetailReport} />
             <Route exact path="/listKM" component={ListKM} />
+            <Route exact path="/listWaitQA" component={ListWaitQA} />
             <Route exact path="/listTraining" component={ListTraining} />
+            <Route exact path="/listViewTraining" component={ListViewTraining} />
             <Route
               exact
               path="/listTraining/detail"
@@ -457,6 +567,13 @@ export class Body extends React.Component<Props, State> {
             <Route exact path="/PDF" component={PDF} />
             <Route exact path="/config/tag" component={Config} />
             <Route exact path="/listKM/rejct" component={DetailKMReject} />
+            <Route exact path="/config/calendar" component={Calendar} />
+
+            <Route exact path="/annual" component={Annual} />
+            <Route exact path="/disposal" component={Disposal} />
+
+            <Route exact path="/feedback" component={Feedback} />
+
           </Switch>
           <div style={{ padding: "1rem", textAlign: "center" }}>
             Designed by BCircle Co.,Ltd.

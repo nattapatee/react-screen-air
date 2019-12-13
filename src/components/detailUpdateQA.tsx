@@ -11,11 +11,10 @@ import {
   Select,
   List,
   Avatar,
-  Modal,
-  Radio
+  Modal
 } from "antd";
 import Center from "react-center";
-import { Route, Switch, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { Header, Icon as Ic, Segment } from "semantic-ui-react";
 
@@ -25,16 +24,11 @@ const { Search } = Input;
 const { Option } = Select;
 type State = {
   visible: boolean;
-  visibleApprove: boolean;
-  value: string
 };
 const { Content } = Layout;
 const data = [
   {
-    title: "14 มิ.ย. 62 สร้างโดย : อ๊บ ไสไม้"
-  },
-  {
-    title: "15 มิ.ย. 62 สร้างโดย : จอน คอน"
+    title: "Ant Design Title 1"
   }
 ];
 type Props = {};
@@ -42,9 +36,7 @@ export class DetailUpdateQA extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      visible: false,
-      visibleApprove: false,
-      value: ""
+      visible: false
     };
   }
   showModal = () => {
@@ -52,37 +44,21 @@ export class DetailUpdateQA extends React.Component<Props, State> {
       visible: true
     });
   };
-  showModalApprove = () => {
-    this.setState({
-        visibleApprove: true
-    });
-  };
+
   handleOk = e => {
     console.log(e);
     this.setState({
-      visible: false,
-      visibleApprove: false
+      visible: false
     });
   };
-  onChange = e => {
-    console.log('radio checked', e.target.value);
-    this.setState({
-      value: e.target.value,
-    });
-  };
+
   handleCancel = e => {
     console.log(e);
     this.setState({
-      visible: false,
-      visibleApprove: false
+      visible: false
     });
   };
   public render() {
-    const radioStyle = {
-        display: 'block',
-        height: '30px',
-        lineHeight: '30px',
-      };
     return (
       <Content
         style={{
@@ -96,7 +72,7 @@ export class DetailUpdateQA extends React.Component<Props, State> {
           <Ic name="search" />
           <Header.Content>
             รายละเอียด
-            <Header.Subheader>รายละอียดตรวจสอบเอกสารของ QA</Header.Subheader>
+            <Header.Subheader>รายละเอียดเอกสารที่ส่งให้ QA ตรวจสอบ</Header.Subheader>
           </Header.Content>
         </Header>
         <hr />
@@ -114,7 +90,92 @@ export class DetailUpdateQA extends React.Component<Props, State> {
               <Row>
                 <Col span={2} />
                 <Col span={4} style={{ textAlign: "right" }}>
-                  Department :
+                  รูปแบบ :
+                </Col>
+                <Col span={8} style={{ paddingLeft: "5px" }}>
+                เอกสารที่ผู้จัดการฝ่ายรับรอง
+                </Col>
+                <Col span={4} />
+              </Row>
+              <br />
+              <Row>
+                <Col span={2} />
+                <Col span={4} style={{ textAlign: "right" }}>
+                  ประเภทเอกสาร :
+                </Col>
+                <Col span={8} style={{ paddingLeft: "5px" }}>
+                Checklist
+                </Col>
+                <Col span={4} />
+              </Row>
+              <br />
+              <Row>
+                <Col span={2} />
+                <Col span={4} style={{ textAlign: "right" }}>
+                  การกระทำ :
+                </Col>
+                <Col span={8} style={{ paddingLeft: "5px" }}>
+                  อัปโหลดเอกสารใหม่
+                </Col>
+                <Col span={4} />
+              </Row>
+              <br />
+              <Row>
+                <Col span={2} />
+                <Col span={4} style={{ textAlign: "right" }}>
+                  หมายเหตุ :
+                </Col>
+                <Col span={8} style={{ paddingLeft: "5px" }}>
+                  
+                </Col>
+                <Col span={4} />
+              </Row>
+              <br />
+              <Row>
+                <Col span={2} />
+                <Col span={4} style={{ textAlign: "right" }}>
+                  วันที่บันทึกของอนุมัติ :
+                </Col>
+                <Col span={8} style={{ paddingLeft: "5px" }}>
+                  19-11-2019:10.30 น.
+                </Col>
+                <Col span={4} />
+              </Row>
+            </Segment>
+            <Segment
+              color="blue"
+              attached="top"
+              style={{ background: "whitesmoke" }}
+            >
+              เจ้าหน้าที่ผู้บันทึก
+            </Segment>
+            <Segment attached>
+            <Row>
+                <Col span={2} />
+                <Col span={4} style={{ textAlign: "right" }}>
+                  ชื่อ :
+                </Col>
+                <Col span={8} style={{ paddingLeft: "5px" }}>
+                สมศรี ผิวงาม
+                </Col>
+                <Col span={4} />
+              </Row>
+              <br />
+              <Row>
+                <Col span={2} />
+                <Col span={4} style={{ textAlign: "right" }}>
+                  รหัสพนักงาน :
+                </Col>
+                <Col span={8} style={{ paddingLeft: "5px" }}>
+                  1202
+                </Col>
+                <Col span={4} />
+              </Row>
+              <br />
+              <Row>
+                <Col span={2} />
+                <Col span={4} style={{ textAlign: "right" }}>
+                ฝ่าย :
                 </Col>
                 <Col span={8} style={{ paddingLeft: "5px" }}>
                   AGA
@@ -125,71 +186,22 @@ export class DetailUpdateQA extends React.Component<Props, State> {
               <Row>
                 <Col span={2} />
                 <Col span={4} style={{ textAlign: "right" }}>
-                  Division :
+                กอง :
                 </Col>
                 <Col span={8} style={{ paddingLeft: "5px" }}>
                   AA
                 </Col>
                 <Col span={4} />
               </Row>
-              <br />
-              <Row>
-                <Col span={2} />
-                <Col span={4} style={{ textAlign: "right" }}>
-                  Type of Document :
-                </Col>
-                <Col span={8} style={{ paddingLeft: "5px" }}>
-                  manual
-                </Col>
-                <Col span={4} />
-              </Row>
-              <br />
-              <Row>
-                <Col span={2} />
-                <Col span={4} style={{ textAlign: "right" }}>
-                  user ผู้อัปโหลด :
-                </Col>
-                <Col span={8} style={{ paddingLeft: "5px" }}>
-                  Kanomwan
-                </Col>
-                <Col span={4} />
-              </Row>
-              <br />
-              <Row>
-                <Col span={2} />
-                <Col span={4} style={{ textAlign: "right" }}>
-                  upload type :
-                </Col>
-                <Col span={8} style={{ paddingLeft: "5px" }}>
-                  new upload document
-                </Col>
-                <Col span={4} />
-              </Row>
-              <br />
-              <Row>
-                <Col span={2} />
-                <Col span={4} style={{ textAlign: "right" }}>
-                  รายละเอียดการแก้ไข :
-                </Col>
-                <Col span={8} style={{ paddingLeft: "5px" }}>
-                  ปาสคาล ซูเปอร์อีแต๋นโปรเจ็ค คันยิดยุคละอ่อนดีพาร์ตเมนต์ติ่มซำ
-                  เทคโนแครตคลับโนติสโนติส พันธุวิศวกรรมพงษ์ คอมเมนท์
-                  โปสเตอร์ซีนออโต้แจมกลาส เบนโล
-                  คอร์รัปชั่นม้งสตรอเบอร์รีเหี่ยวย่น เพียวโมหจริตยูโร
-                  คาปูชิโนสแควร์ เซาท์แรงดูด เดอะโค้กบอยคอตต์คลิปยะเยือก เกมส์
-                  เอ็กซ์เพรสจตุคามพาร์ ลิมิตนางแบบ
-                </Col>
-                <Col span={4} />
-              </Row>
             </Segment>
           </Col>
           <Col span={8}>
-            <Segment
-              color="grey"
+          <Segment
+              color="blue"
               attached="top"
               style={{ background: "whitesmoke" }}
             >
-              version history
+              ไฟล์เอกสาร
             </Segment>
             <Segment attached>
               <List
@@ -197,25 +209,106 @@ export class DetailUpdateQA extends React.Component<Props, State> {
                 dataSource={data}
                 renderItem={item => (
                   <NavLink to="/PDF">
-
-                    <List.Item>
+                  <List.Item>
                     <List.Item.Meta
-                      avatar={<Avatar src="https://img.icons8.com/bubbles/2x/document.png" />}
-                      title="CAAT-AGA-AIM.pdf"
-                      description={item.title}
+                      avatar={
+                        <Avatar src="https://img.icons8.com/bubbles/2x/document.png" />
+                      }
+                      title="CAAT-AGA-AIM-001.pdf"
+                      description="14 มิ.ย. 62 สร้างโดย : ศศิน นวพง"
                     />
                   </List.Item>
                   </NavLink>
                 )}
               />
-              <Center>
-                <NavLink to="/list/detailUpdate/compare">
-                  <Button type="primary" icon="snippets">
-                    เปรียบเทียบเอกสาร
-                  </Button>
-                </NavLink>
-              </Center>
             </Segment>
+            <Segment
+              color="grey"
+              attached="top"
+              style={{ background: "whitesmoke" }}
+            >
+              สถานะการตรวจสอบ
+            </Segment>
+            <Segment attached>
+            <Row>
+                <Col span={2} />
+                <Col span={6} style={{ textAlign: "right" }}>
+                  สถานะ : 
+                </Col>
+                <Col span={6} style={{ paddingLeft: "5px" }}>
+                อนุมัติ
+                </Col>
+                <Col span={4} />
+              </Row>
+              <br />
+              <Row>
+                <Col span={2} />
+                <Col span={6} style={{ textAlign: "right" }}>
+                  ผู้ตรวจสอบ : 
+                </Col>
+                <Col span={6} style={{ paddingLeft: "5px" }}>
+                  ทารารัตน์ หวังดี
+                </Col>
+                <Col span={4} />
+              </Row>
+              <br />
+              <Row>
+                <Col span={2} />
+                <Col span={6} style={{ textAlign: "right" }}>
+                  ตำแหน่ง : 
+                </Col>
+                <Col span={6} style={{ paddingLeft: "5px" }}>
+                    พนักงาน
+                </Col>
+                <Col span={4} />
+              </Row>
+              <br />
+              <Row>
+                <Col span={2} />
+                <Col span={6} style={{ textAlign: "right" }}>
+                  กอง : 
+                </Col>
+                <Col span={6} style={{ paddingLeft: "5px" }}>
+                      QQ
+                </Col>
+                <Col span={4} />
+              </Row>
+              <br />
+              <Row>
+                <Col span={2} />
+                <Col span={6} style={{ textAlign: "right" }}>
+                  ฝ่าย : 
+                </Col>
+                <Col span={6} style={{ paddingLeft: "5px" }}>
+                QAD
+                </Col>
+                <Col span={4} />
+              </Row>
+              <br />
+              <Row>
+                <Col span={2} />
+                <Col span={6} style={{ textAlign: "right" }}>
+                  หมายเหตุ : 
+                </Col>
+                <Col span={6} style={{ paddingLeft: "5px" }}>
+                
+                </Col>
+                <Col span={4} />
+              </Row>
+              <br />
+              <Row>
+                <Col span={1} />
+                <Col span={7} style={{ textAlign: "right" }}>
+                  วันที่ตรวจสอบ : 
+                </Col>
+                <Col span={6} style={{ paddingLeft: "5px" }}>
+                04-12-2019:09.00 น.
+                </Col>
+                <Col span={4} />
+              </Row>
+            <br />
+            </Segment>
+           
           </Col>
         </Row>
         <br />
@@ -230,42 +323,27 @@ export class DetailUpdateQA extends React.Component<Props, State> {
             style={{ width: "100%", marginLeft: "5px", marginRight: "5px" }}
           />
         </Modal>
-        <Modal
-          title="Comment"
-          visible={this.state.visibleApprove}
-          okText="OK"
-          cancelText="ยกเลิก"
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-        > version เอกสาร
-        <br />
-        <Radio.Group onChange={this.onChange} value={this.state.value}>
-      <Radio style={radioStyle} value={1}>
-       Major
-      </Radio>
-      <Radio style={radioStyle} value={2}>
-        Minor
-      </Radio>
-      </Radio.Group>
-         
-        </Modal>
-        <Row>
+        {/* <Row>
           <Col span={4} />
           <Col span={16}>
             <Center>
+              <NavLink to="/list/detail/edit">
               <Button
                 type="primary"
                 style={{ marginRight: "20px" }}
-                onClick={this.showModalApprove}
-                icon="check-circle">
-              
-                Approve
+                onClick={null}
+                icon="check-circle"
+              >
+                แก้ไข
               </Button>
-              <Button onClick={this.showModal} icon="close-circle">Reject</Button>
+              </NavLink>
+              <Button onClick={null} icon="close-circle">
+                ลบ
+              </Button>
             </Center>
           </Col>
           <Col span={4} />
-        </Row>
+        </Row> */}
       </Content>
     );
   }

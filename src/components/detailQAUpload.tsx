@@ -11,12 +11,14 @@ import {
   Select,
   List,
   Avatar,
-  Modal
+  Modal,
+  Upload
 } from "antd";
 import Center from "react-center";
 import { NavLink } from "react-router-dom";
 
 import { Header, Icon as Ic, Segment } from "semantic-ui-react";
+const { Dragger } = Upload;
 
 import TextArea from "antd/lib/input/TextArea";
 import * as React from "react";
@@ -32,7 +34,7 @@ const data = [
   }
 ];
 type Props = {};
-export class DetailQA extends React.Component<Props, State> {
+export class DetailQAUpload extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -59,6 +61,22 @@ export class DetailQA extends React.Component<Props, State> {
     });
   };
   public render() {
+    const props = {
+      name: "file",
+      multiple: true,
+      action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+      onChange(info) {
+        const { status } = info.file;
+        if (status !== "uploading") {
+          console.log(info.file, info.fileList);
+        }
+        if (status === "done") {
+          message.success(`${info.file.name} file uploaded successfully.`);
+        } else if (status === "error") {
+          message.error(`${info.file.name} file upload failed.`);
+        }
+      }
+    };
     return (
       <Content
         style={{
@@ -72,7 +90,9 @@ export class DetailQA extends React.Component<Props, State> {
           <Ic name="search" />
           <Header.Content>
             รายละเอียด
-            <Header.Subheader>รายละเอียดเอกสารที่ส่งให้ QA ตรวจสอบ</Header.Subheader>
+            <Header.Subheader>
+              รายละเอียดเอกสารที่ส่งให้ QA ตรวจสอบ
+            </Header.Subheader>
           </Header.Content>
         </Header>
         <hr />
@@ -93,7 +113,7 @@ export class DetailQA extends React.Component<Props, State> {
                   รูปแบบ :
                 </Col>
                 <Col span={8} style={{ paddingLeft: "5px" }}>
-                เอกสารที่ผู้จัดการฝ่ายรับรอง
+                  เอกสารที่ผู้จัดการฝ่ายรับรอง
                 </Col>
                 <Col span={4} />
               </Row>
@@ -104,7 +124,7 @@ export class DetailQA extends React.Component<Props, State> {
                   ประเภทเอกสาร :
                 </Col>
                 <Col span={8} style={{ paddingLeft: "5px" }}>
-                Checklist
+                  Checklist
                 </Col>
                 <Col span={4} />
               </Row>
@@ -125,9 +145,7 @@ export class DetailQA extends React.Component<Props, State> {
                 <Col span={4} style={{ textAlign: "right" }}>
                   หมายเหตุ :
                 </Col>
-                <Col span={8} style={{ paddingLeft: "5px" }}>
-                  
-                </Col>
+                <Col span={8} style={{ paddingLeft: "5px" }}></Col>
                 <Col span={4} />
               </Row>
               <br />
@@ -150,7 +168,7 @@ export class DetailQA extends React.Component<Props, State> {
               เจ้าหน้าที่ผู้บันทึก
             </Segment>
             <Segment attached>
-            <Row>
+              <Row>
                 <Col span={2} />
                 <Col span={4} style={{ textAlign: "right" }}>
                   ชื่อ :
@@ -175,7 +193,7 @@ export class DetailQA extends React.Component<Props, State> {
               <Row>
                 <Col span={2} />
                 <Col span={4} style={{ textAlign: "right" }}>
-                ฝ่าย :
+                  ฝ่าย :
                 </Col>
                 <Col span={8} style={{ paddingLeft: "5px" }}>
                   AGA
@@ -186,7 +204,7 @@ export class DetailQA extends React.Component<Props, State> {
               <Row>
                 <Col span={2} />
                 <Col span={4} style={{ textAlign: "right" }}>
-                กอง :
+                  กอง :
                 </Col>
                 <Col span={8} style={{ paddingLeft: "5px" }}>
                   AA
@@ -196,7 +214,7 @@ export class DetailQA extends React.Component<Props, State> {
             </Segment>
           </Col>
           <Col span={8}>
-          <Segment
+            <Segment
               color="blue"
               attached="top"
               style={{ background: "whitesmoke" }}
@@ -209,15 +227,15 @@ export class DetailQA extends React.Component<Props, State> {
                 dataSource={data}
                 renderItem={item => (
                   <NavLink to="/PDF">
-                  <List.Item>
-                    <List.Item.Meta
-                      avatar={
-                        <Avatar src="https://img.icons8.com/bubbles/2x/document.png" />
-                      }
-                      title="CAAT-AGA-AIM.pdf"
-                      description="14 มิ.ย. 62 สร้างโดย : ศศิน นวพง"
-                    />
-                  </List.Item>
+                    <List.Item>
+                      <List.Item.Meta
+                        avatar={
+                          <Avatar src="https://img.icons8.com/bubbles/2x/document.png" />
+                        }
+                        title="CAAT-AGA-AIM-001.pdf"
+                        description="14 มิ.ย. 62 สร้างโดย : ศศิน นวพง"
+                      />
+                    </List.Item>
                   </NavLink>
                 )}
               />
@@ -230,13 +248,13 @@ export class DetailQA extends React.Component<Props, State> {
               สถานะการตรวจสอบ
             </Segment>
             <Segment attached>
-            <Row>
+              <Row>
                 <Col span={2} />
                 <Col span={6} style={{ textAlign: "right" }}>
-                  สถานะ : 
+                  สถานะ :
                 </Col>
                 <Col span={6} style={{ paddingLeft: "5px" }}>
-                รอตรวจสอบ
+                  QA อนุมัติเอกสารฉบับร่าง
                 </Col>
                 <Col span={4} />
               </Row>
@@ -244,10 +262,10 @@ export class DetailQA extends React.Component<Props, State> {
               <Row>
                 <Col span={2} />
                 <Col span={6} style={{ textAlign: "right" }}>
-                  ผู้ตรวจสอบ : 
+                  ผู้ตรวจสอบ :
                 </Col>
                 <Col span={6} style={{ paddingLeft: "5px" }}>
-                
+                    ขนมหวาน หวัง
                 </Col>
                 <Col span={4} />
               </Row>
@@ -255,10 +273,10 @@ export class DetailQA extends React.Component<Props, State> {
               <Row>
                 <Col span={2} />
                 <Col span={6} style={{ textAlign: "right" }}>
-                  ตำแหน่ง : 
+                  ตำแหน่ง :
                 </Col>
                 <Col span={6} style={{ paddingLeft: "5px" }}>
-                
+                    QA
                 </Col>
                 <Col span={4} />
               </Row>
@@ -266,10 +284,10 @@ export class DetailQA extends React.Component<Props, State> {
               <Row>
                 <Col span={2} />
                 <Col span={6} style={{ textAlign: "right" }}>
-                  กอง : 
+                  กอง :
                 </Col>
                 <Col span={6} style={{ paddingLeft: "5px" }}>
-                
+                    QA
                 </Col>
                 <Col span={4} />
               </Row>
@@ -277,10 +295,10 @@ export class DetailQA extends React.Component<Props, State> {
               <Row>
                 <Col span={2} />
                 <Col span={6} style={{ textAlign: "right" }}>
-                  ฝ่าย : 
+                  ฝ่าย :
                 </Col>
                 <Col span={6} style={{ paddingLeft: "5px" }}>
-                
+                    QAD
                 </Col>
                 <Col span={4} />
               </Row>
@@ -288,57 +306,55 @@ export class DetailQA extends React.Component<Props, State> {
               <Row>
                 <Col span={2} />
                 <Col span={6} style={{ textAlign: "right" }}>
-                  หมายเหตุ : 
+                  หมายเหตุ :
                 </Col>
-                <Col span={6} style={{ paddingLeft: "5px" }}>
-                
-                </Col>
+                <Col span={6} style={{ paddingLeft: "5px" }}></Col>
                 <Col span={4} />
               </Row>
               <br />
               <Row>
                 <Col span={1} />
                 <Col span={7} style={{ textAlign: "right" }}>
-                  วันที่ตรวจสอบ : 
+                  วันที่ตรวจสอบ :
                 </Col>
                 <Col span={6} style={{ paddingLeft: "5px" }}>
-                
+                20-11-2019:18.30 น.
                 </Col>
                 <Col span={4} />
               </Row>
-            <br />
+              <br />
             </Segment>
-           
           </Col>
         </Row>
         <br />
         <Modal
-          title="Comment"
+          title="อัปโหลดไฟล์เอกสารฉบับสมบูรณ์"
           visible={this.state.visible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
         >
-          <TextArea
-            rows={4}
-            style={{ width: "100%", marginLeft: "5px", marginRight: "5px" }}
-          />
+          <Dragger {...props}>
+            <p className="ant-upload-drag-icon">
+              <Icon type="inbox" />
+            </p>
+            <p className="ant-upload-text">คลิกเพื่ออัปโหลดไฟล์</p>
+            <p className="ant-upload-hint">อัปโหลดไฟล์เอกสารฉบับสมบูรณ์</p>
+          </Dragger>
         </Modal>
         <Row>
           <Col span={4} />
           <Col span={16}>
             <Center>
-              <NavLink to="/list/detail/edit">
               <Button
                 type="primary"
                 style={{ marginRight: "20px" }}
-                onClick={null}
+                onClick={this.showModal}
                 icon="check-circle"
               >
-                แก้ไข
+                อัปโหลดเอกสารฉบับสมบูรณ์
               </Button>
-              </NavLink>
               <Button onClick={null} icon="close-circle">
-                ลบ
+                ยกเลิก
               </Button>
             </Center>
           </Col>

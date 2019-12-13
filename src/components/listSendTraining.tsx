@@ -124,7 +124,7 @@ export class ListSendTraining extends React.Component<Props, State> {
         no: "1",
         title: "ความปลอดภัยและมาตรฐานในการบิน",
         report: "รายงานมาตรฐานความปลอดภัย.pdf",
-        staff: "2",
+        staff: "3",
         dateCheck: "11/10/2562 14.00น.",
         name: "กาสะลอง แสนดี",
         tag: "ความปลอดภัย",
@@ -142,7 +142,7 @@ export class ListSendTraining extends React.Component<Props, State> {
         no: "2",
         title: "การจัดเก็บเอกสารที่ถูกต้อง",
         report: "รายงานมาตรฐานความปลอดภัย.pdf",
-        staff: "1",
+        staff: "2",
         dateCheck: "11/10/2562 15.00น.",
 
         name: "ซ้องปีป แสนดี",

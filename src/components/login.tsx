@@ -9,7 +9,7 @@ import {
 } from "semantic-ui-react";
 import { Form, Icon, Input, Button, Checkbox } from "antd";
 import "antd/dist/antd.css";
-import * as React from "react";
+import * as React   from "react";
 import "../css/style.css";
 declare let require: any;
 import Center from "react-center";
